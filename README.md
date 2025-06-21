@@ -21,8 +21,7 @@ The processor is designed from the ground up, featuring a custom Instruction Set
 
 The block diagram below illustrates the high-level architecture and the data flow between the core components of the microprocessor.
 
-![Processor Block Diagram](![image](BlockDiagram.png)
-)`
+![Processor Block Diagram](BlockDiagram.png)
 
 
 ## Instruction Set Architecture (ISA)
