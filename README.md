@@ -21,7 +21,7 @@ The processor is designed from the ground up, featuring a custom Instruction Set
 
 The block diagram below illustrates the high-level architecture and the data flow between the core components of the microprocessor.
 
-![Processor Block Diagram](![image](https://github.com/user-attachments/assets/c6099efa-2c80-472f-b829-cb9ac4417652)
+![Processor Block Diagram](![image](BlockDiagram.png)
 )`
 
 
