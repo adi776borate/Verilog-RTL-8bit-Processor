@@ -1,0 +1,54 @@
+`timescale 1ns / 1ps 
+ 
+module RegisterFile_tb; 
+    reg clk; 
+    reg [3:0] Addr; 
+    reg [7:0] WriteData; 
+    reg WriteEnable; 
+    wire [7:0] ReadData; 
+ 
+    RegisterFile uut ( 
+        .clk(clk), 
+        .Addr(Addr), 
+        .WriteData(WriteData), 
+        .WriteEnable(WriteEnable), 
+        .ReadData(ReadData) 
+    ); 
+ 
+    initial begin 
+        $display("Time\tWriteEnable\tAddr\tWriteData\tReadData"); 
+        $monitor("%g\t%b\t\t%h\t%h\t\t%h", $time, WriteEnable, Addr, WriteData, 
+ReadData); 
+    end 
+ 
+    initial begin 
+        clk = 0; 
+        forever #5 clk = ~clk; // 10ns clock period 
+    end 
+ 
+    initial begin 
+        // Read default value 
+        WriteEnable = 0; 
+        Addr = 4'd2; #10; 
+ 
+        // Write 0xAA to register 2 
+        WriteEnable = 1; 
+        Addr = 4'd2; 
+        WriteData = 8'hAA; #10; 
+ 
+        // Read back from register 2 
+        WriteEnable = 0; 
+        Addr = 4'd2; #10; 
+ 
+        // Write 0xFF to register 5 
+        WriteEnable = 1; 
+        Addr = 4'd5; 
+        WriteData = 8'hFF; #10; 
+ 
+        // Read back from register 5 
+        WriteEnable = 0; 
+        Addr = 4'd5; #10; 
+ 
+        $finish; 
+    end 
+endmodule 
